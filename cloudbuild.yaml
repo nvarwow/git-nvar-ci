@@ -1,7 +1,7 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/nvar-school/git-nvar-ci:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'gcr.io/nvar-school/git-nvar-ci:$SHORT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/nvar-school/git-nvar-ci:$COMMIT_SHA']
+  args: ['push', 'gcr.io/nvar-school/git-nvar-ci:$SHORT_SHA']
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'git-nvar-ci', '--image=gcr.io/nvar-school/git-nvar-ci:$COMMIT_SHA', '--region=us-central1', '--platform=managed']
+  args: ['run', 'deploy', 'git-nvar-ci', '--image=gcr.io/nvar-school/git-nvar-ci:$SHORT_SHA', '--region=us-central1', '--platform=managed']
